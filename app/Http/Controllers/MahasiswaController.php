@@ -6,6 +6,8 @@ use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Kelas;
+use App\Models\Matakuliah;
+use App\Models\Mahasiswa_Matakuliah;
 
 class MahasiswaController extends Controller
 {
@@ -157,5 +159,12 @@ class MahasiswaController extends Controller
         Mahasiswa::where('nim', $nim)->delete();
         return redirect()->route('mahasiswa.index')
             -> with('success', 'Mahasiswa Berhasil Dihapus');
+    }
+
+    public function Mahasiswa_Matakuliah($nim)
+    {
+        $mahasiswa = Mahasiswa_Matakuliah::with('matakuliah')->where('mahasiswa_id', $nim)->get();
+        $mahasiswa->mahasiswa = Mahasiswa::with('kelas')->where('id_mahasiswa', $nim)->first();
+        return view('mahasiswa.nilaimhs', ['mahasiswa' => $mahasiswa]);
     }
 }
