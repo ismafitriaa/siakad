@@ -13,6 +13,7 @@
         <div class="col-12 text-center">
             <h3><strong>KARTU HASIL STUDI (KHS)</strong></h3>
         </div>
+        <a style="float: right"class="btn btn-success mt-3" href="/mahasiswa/nilai/{{ $mahasiswa->mahasiswa->nim }}/pdf">Cetak KHS</a>
 
     <b>NAMA:</b> {{ $mahasiswa->mahasiswa->nama }}<br>
     <b>NIM: </b>{{ $mahasiswa->mahasiswa->nim }}<br>
